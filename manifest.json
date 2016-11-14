@@ -1,0 +1,29 @@
+{
+  "manifest_version": 2,
+  "name": "dtdsh SEO Tools",
+  "version": "1.0",
+  "default_locale": "ja_JP",
+  "description": "__MSG_Description",
+  "icons": {
+    "128": "img/logo/icon-128.png",
+    "48": "img/logo/icon-48.png",
+    "16": "img/logo/icon-16.png"
+  },
+  "page_action": {
+    "default_icon": "img/logo/icon-48.png",
+    "default_popup": "popup.html",
+    "default_title": "__MSG_Title"
+  },
+  "background": {
+    "scripts": ["background.min.js"]
+  },
+  "background_page": "background.html",
+  "content_scripts": [{
+    "js": "content.js",
+    "matches": ["*://*/*"]
+  }],
+  "options_page": "options.html",
+  "permissions": ["webRequest", "tabs", "*://*/*"],
+//  "update_url": "http://path/to/updateInfo.xml",
+  "web_accessible_resources": [ "page-seostats.html", "page-siteinfo.html", "page-pageinfo.html", "page-pagespeed.html", "page-webtools.html", "jsr/en_content.js" ]
+}
