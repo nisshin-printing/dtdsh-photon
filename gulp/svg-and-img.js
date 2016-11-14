@@ -23,7 +23,7 @@ gulp.task('svg', () => {
 			},
 			parserOptions: { xmlMode: true }
 		}))
-		.pipe(gulp.dest(path.svg))
+		.pipe(gulp.dest(config.dist + config.path.svg.dest))
 		.pipe($.browser.stream(config.path.svg.watch));
 });
 
@@ -40,6 +40,16 @@ gulp.task('svg2png', () => {
 			prefix: 'icons.svg.'
 		}))
 		.pipe($.imagemin())
-		.pipe(gulp.dest(path.svg))
+		.pipe(gulp.dest(config.dist + config.path.svg.dest))
 		.pipe($.browser.stream(config.path.svg.watch));
+});
+
+gulp.task('image', () => {
+	return gulp.src(config.path.image.src)
+		.pipe($.plumber({
+		errorHandler: $.notify.onError('<%= error.message %>')
+	}))
+		.pipe($.imagemin())
+		.pipe(gulp.dest(config.dist + config.path.image.dest))
+		.pipe($.browser.stream());
 });

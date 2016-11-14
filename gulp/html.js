@@ -14,6 +14,6 @@ gulp.task('html', () => {
 		}))
 		.pipe($.ejs({}, {ext: '.html'}))
 		.pipe($.htmlmin(config.ejs.minify))
-		.pipe(gulp.dest(config.path.ejs.dest))
+		.pipe(gulp.dest(config.dist))
 		.pipe($.browser.stream());
 });

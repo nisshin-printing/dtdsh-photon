@@ -59,6 +59,6 @@ gulp.task('preJs', () => {
 			extname: '.min.js'
 		}))
 		.pipe($.sourcemaps.write(config.js.sourcemaps))
-		.pipe(gulp.dest(config.path.js.dest))
+		.pipe(gulp.dest(config.dist + config.path.js.dest))
 		.pipe($.browser.reload({ stream: true }));
 })

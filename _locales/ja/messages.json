@@ -1,8 +1,11 @@
 {
-  "Description": {
-    "message": "表示しているサイトが使用している技術、ランキングなどを確認できる競合サイトSEO調査ツールです。"
-  },
-  "Title": {
-    "message": "日進SEOツール"
-  },
+	"Description": {
+		"message": "表示しているサイトが使用している技術、ランキングなどを確認できる競合サイトSEO調査ツールです。"
+	},
+	"Title": {
+		"message": "日進SEOツール"
+	},
+	"options": {
+		"message": "オプション"
+	}
 }

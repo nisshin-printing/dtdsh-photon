@@ -8,7 +8,7 @@ let gulp = require('gulp'),
 
 gulp.task('server', () => {
 	$.browser.init({
-		server: config.server
+		server: './' + config.dist
 	});
 });
 gulp.task('reload', () => {

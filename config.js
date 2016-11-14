@@ -4,7 +4,8 @@
  */
 module.exports = {
 	IS_PRODUCTION: false,
-	dist: 'public',
+	IS_SERVER_BUILD: false,
+	dist: 'apps/',
 	autoTest: false,
 	ejs: {
 		minify: {
@@ -53,43 +54,42 @@ module.exports = {
 			fullPaths: false,
 			debug: true,
 			entries: [
-              './js/src/background.js',
-              './js/src/content.js'
-            ],
+				'./js/src/background.js',
+				'./js/src/content.js'
+			],
 			extensions: 'js'
 		},
 		output: './js',
 		filename: 'apps.js'
 	},
 	server: {
-		baseDir: './apps',
 		index: 'index.html'
 	},
+	copyfiles: ['**/*.json', '!apps/**/*.json'],
 	path: {
 		ejs: {
 			src: ['ejs/**/*.ejs', '!ejs/**/_*.ejs'],
-			watch: 'ejs/**/*',
-			dest: './apps'
+			watch: 'ejs/**/*'
 		},
 		style: {
 			src: ['sass/**/*.scss', '!sass/**/_*.scss'],
 			watch: 'sass/**/*.scss',
-			dest: 'apps/assets/css'
+			dest: 'css'
 		},
 		svg: {
 			src: 'svg/**/*.svg',
 			watch: 'svg/**/*.svg',
-			dest: 'apps/assets/svg',
+			dest: 'svg',
 		},
 		js: {
 			src: ['js/*.js', '!js/src/**/*'],
 			watch: 'js/**/*.js',
-			dest: 'apps/assets/js'
+			dest: 'js'
 		},
 		image: {
 			src: 'img/**/*',
 			watch: 'img/**/*',
-			dest: 'apps/assets/img/'
+			dest: 'img'
 		}
 	}
 };

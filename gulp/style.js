@@ -20,6 +20,6 @@ gulp.task('style', () => {
 		.pipe($.autoprefixer(config.style.autoprefixer))
 		.pipe($.cssmin())
 		.pipe($.sourcemaps.write(config.style.soucemaps))
-		.pipe(gulp.dest(config.path.style.dest))
+		.pipe(gulp.dest(config.dist + config.path.style.dest))
 		.pipe($.browser.stream({match: '**/*.css'}));
 });

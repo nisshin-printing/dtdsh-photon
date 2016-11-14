@@ -1,29 +1,36 @@
 {
-  "manifest_version": 2,
-  "name": "dtdsh SEO Tools",
-  "version": "1.0",
-  "default_locale": "ja_JP",
-  "description": "__MSG_Description",
-  "icons": {
-    "128": "img/logo/icon-128.png",
-    "48": "img/logo/icon-48.png",
-    "16": "img/logo/icon-16.png"
-  },
-  "page_action": {
-    "default_icon": "img/logo/icon-48.png",
-    "default_popup": "popup.html",
-    "default_title": "__MSG_Title"
-  },
-  "background": {
-    "scripts": ["background.min.js"]
-  },
-  "background_page": "background.html",
-  "content_scripts": [{
-    "js": "content.js",
-    "matches": ["*://*/*"]
-  }],
-  "options_page": "options.html",
-  "permissions": ["webRequest", "tabs", "*://*/*"],
-//  "update_url": "http://path/to/updateInfo.xml",
-  "web_accessible_resources": [ "page-seostats.html", "page-siteinfo.html", "page-pageinfo.html", "page-pagespeed.html", "page-webtools.html", "jsr/en_content.js" ]
+		"background": {
+				"page": "background.html"
+		},
+		"content_scripts": [ {
+				"js": [ "js/content.min.js" ],
+				"matches": [ "http://*/*", "https://*/*" ],
+				"run_at": "document_idle"
+		}, {
+				"all_frames": true,
+				"js": [ "js/iframe.min.js" ],
+				"matches": [ "http://*/*", "https://*/*" ],
+				"run_at": "document_start"
+		} ],
+		"content_security_policy": "script-src 'self' https://ssl.google-analytics.com; object-src 'self'",
+		"default_locale": "ja",
+		"description": "__MSG_Description__",
+		"homepage_url": "https://dtdsh.com?pk_campaign=chrome&pk_kwd=context",
+		"icons": {
+				"128": "img/logo/icon-128.png",
+				"16": "img/logo/icon-16.png",
+				"48": "img/logo/icon-48.png"
+		},
+		"manifest_version": 2,
+		"name": "dtdsh SEO Tools",
+		"options_page": "options.html",
+		"page_action": {
+				"default_icon": "img/logo/icon-48.png",
+				"default_popup": "popup.html",
+				"default_title": "__MSG_Title__"
+		},
+		"permissions": [ "tabs", "webRequest", "http://*/*", "https://*/*" ],
+		"update_url": "https://clients2.google.com/service/update2/crx",
+		"version": "1.0.0",
+		"web_accessible_resources": [ "js/inject.min.js" ]
 }

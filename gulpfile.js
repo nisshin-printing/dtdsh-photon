@@ -13,6 +13,7 @@ let tasks = require('./gulp/load'),
  * 監視タスク
  */
 gulp.task('watch', () => {
+	gulp.watch(config.copyfiles, ['copy']);
 	gulp.watch(config.path.ejs.watch, ['html']);
 	gulp.watch(config.path.style.watch, ['style']);
 	gulp.watch(config.path.js.watch, ['preJs']);
@@ -24,7 +25,7 @@ gulp.task('watch', () => {
  * build タスク
  */
 gulp.task('build', ['clean'], (callback) => {
-	return runSequence(['html', 'style', 'preJs', 'svg', 'svg2png', 'image', 'browserify', 'copy'], callback);
+	runSequence(['copy', 'html', 'style', 'preJs', 'svg', 'svg2png', 'image', 'browserify'], callback);
 });
 
 /**
@@ -38,7 +39,12 @@ gulp.task('production', (callback) => {
 /**
  * default タスク
  */
-var defaultTasks = ['server', 'watch', 'watchify'];
+var defaultTasks;
+if (config.IS_SERVER_BUILD) {
+	defaultTasks = ['server', 'watch', 'watchify'];
+} else {
+	defaultTasks = ['watch', 'watchify'];
+}
 gulp.task('default', () => {
 	return runSequence(defaultTasks);
 });
